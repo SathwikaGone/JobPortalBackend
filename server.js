@@ -14,13 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //DB config
-const db = require("./config/key.js").MongodbURI;
+const db = require("./config/key").MongodbURI;
 
 //connect Mongo
-// mongoose
-//   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log("DB connected"))
-//   .catch((err) => console.log(err));
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log(err));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
