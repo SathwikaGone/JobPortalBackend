@@ -2,13 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const { ApolloServer } = require("apollo-server-express");
-// const resolvers = require("./app/Grapgql/resolvers.ts");
-// const typedefs = require("./app/Grapgql/typedef.ts");
+const resolvers = require("./GraphQl/resolvers.ts");
+const typeDefs = require("./GraphQl/typeDefs.ts");
 
 const app = express();
 
-// const server = new ApolloServer({ typeDefs: typedefs, resolvers });
-// server.applyMiddleware({ app, path: "/api" });
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app, path: "/api" });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +31,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.set("port", process.env.PORT || 5000);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, console.log("Server running on ", PORT));
 
 module.exports = app;

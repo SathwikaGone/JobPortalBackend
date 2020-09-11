@@ -13,7 +13,9 @@
     "mongoose": "^5.8.11",
     "nodemon": "^2.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/graphql": "^14.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
