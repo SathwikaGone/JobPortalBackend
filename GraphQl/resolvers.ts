@@ -18,6 +18,8 @@ module.exports = {
   Mutation: {
     addCourse: async (temp, req) => {
       try {
+        console.log("req", req.Course);
+
         const {
           courseName,
           category,
@@ -45,6 +47,7 @@ module.exports = {
           createdBy,
         });
         await addC.save();
+        console.log(addC);
         return addC;
       } catch (err) {
         return {
