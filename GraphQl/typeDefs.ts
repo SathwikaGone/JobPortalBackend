@@ -3,6 +3,9 @@ const { gql } = require("apollo-server-express");
 module.exports = gql`
   type Query {
     allCourses: [Courses!]!
+    getCategory(category: String!): [Courses!]!
+    searchCards(word: String!): [Courses!]!
+    filterCards(filter: String!): [Courses!]!
   }
 
   type Mutation {
