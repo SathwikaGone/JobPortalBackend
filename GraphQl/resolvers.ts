@@ -17,6 +17,11 @@ module.exports = {
       try {
         const allCourses = await models.find();
         let p = allCourses.filter((item) => item.category == category);
+
+        if (category === "") {
+          return allCourses;
+        }
+
         return p;
       } catch (err) {
         return {
@@ -94,6 +99,9 @@ module.exports = {
           func(filterData[i]);
         }
         console.log("lenth", sendCourses.length);
+        if (filter === "") {
+          return allCourses;
+        }
         return sendCourses;
       } catch (err) {
         return {
